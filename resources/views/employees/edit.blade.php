@@ -17,7 +17,7 @@
 
 <div class="container">
   <h2 style="text-align:center;">Edit Employee</h2>
-  <form method="POST" id="editEmployee" name="editEmployee" action="{{ url('save-employee').'/'.$employee['id'] }} }}">
+  <form method="POST" id="editEmployee" action="{{ url('save-employee').'/'.$employee['id'] }} }}">
     {{csrf_field()}}
     <div class="form-group">
       <label for="name">Name</label>
@@ -87,7 +87,6 @@
               'checkblank' : true,
               'phone' : true,
           },
-          'password' : {'checkblank' : true},
           'dob' : {'checkblank' : true},
           'status' : {'checkblank' : true},
           'picture' : {

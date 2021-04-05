@@ -28,7 +28,6 @@ class EmployeeController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255',         
                 'number' => 'required|string',
-                'password' => 'required|string|min:6',
                 'status' => 'required|in:1,2',
                 'dob' => 'required|date',
             ]);
@@ -39,8 +38,13 @@ class EmployeeController extends Controller
                 ]);
             }
 
+            if($request->password){
+                $validator = Validator::make($request->all(), [
+                    'password' => 'required|string|min:6'
+                ]);
+            }
+
             if ($validator->fails()) {
-                print_r($validator->errors());exit;
                 return redirect()->back()->withInput(Input::all())->withErrors($validator->errors());
             }
 
